@@ -11,9 +11,11 @@ def show_data():
     cols = ['Location'] + list(df.loc[:, 'New Cases':'Total Recovered'].columns)
     st.dataframe(df[cols].head(10))
     
-    #yampilkan statistija deskrimptiv
+    #tampilkan statistika deskriptive
     st.subheader("Statistika Deskriptif")
     st.write(df.describe())
+    
+    #Ini gini kan, ya?
     
 def jumlah_data():
     df = load_data()
