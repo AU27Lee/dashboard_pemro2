@@ -8,11 +8,22 @@ def judul():
     
 st.sidebar.title("Navigasi")
 menu = st.sidebar.radio("Pilih Halaman", ["Home", "Halaman Data"])
+
 if menu == "Home":
     judul()
+    #Pilih tahun
+    year = select_year()
+    #Load & filter data
+    df = load_data()
+    df_filtered = filter_data(df,year)
+    kolom(df_filtered)
+    pie_chart(df_filtered)
 elif menu == "Halaman Data":
     judul()
-    show_data()
-    jumlah_data()
+    year = select_year()
+    #Load & filter data
+    df = load_data()
+    df_filtered = filter_data(df, year)
+    show_data(df_filtered)
     
 st.caption("Copyright - Aulia- 184240010")
