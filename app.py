@@ -13,6 +13,7 @@ if menu == "Home":
     judul()
     #Pilih tahun
     year = select_year()
+    lokasi = select_location(load_data())
     #Load & filter data
     df = load_data()
     df_filtered = filter_data(df,year)
@@ -21,6 +22,7 @@ if menu == "Home":
 elif menu == "Halaman Data":
     judul()
     year = select_year()
+    lokasi = select_location(load_data())
     #Load & filter data
     df = load_data()
     df_filtered = filter_data(df, year)

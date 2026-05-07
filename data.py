@@ -6,9 +6,11 @@ def load_data():
     df= pd.read_csv("dataset/covid_19_indonesia_time_series_all.csv")
     return df
 
-def filter_data(df, year=None):
+def filter_data(df, year=None, lokasi=None):
     if year:
         df = df[df['Date'].astype(str).str.contains(str(year))]
+    if lokasi:
+        df=df[df['Location'].isin(lokasi)]
     return df
 
 def show_data(df):
@@ -60,6 +62,15 @@ def select_year():
     # Kembalikan None jika yang dipilih adalah "Semua Tahun" 
     # agar fungsi filter_data kamu tetap bekerja
     return None if pilihan == "Semua Tahun" else pilihan
+
+def select_location(df):
+    daftar_lokasi = df['Location'].unique().tolist()
+    pilihan = st.sidebar.multiselect(
+        "Pilih Lokasi 🏠",
+        options=daftar_lokasi,
+        placeholder="Pilih lokasi yang diinginkan!"
+    )
+    return pilihan
 
 def pie_chart(df):
     #pemanggil data
